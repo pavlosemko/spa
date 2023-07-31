@@ -7,7 +7,7 @@ class Button extends Component {
   }
 
   onClickHandler(node, e) {
-    this.props.onClick?.bind(node, e)();
+    this.props.onClick?.call(node, e);
   }
   @AsNode
   getTemplate() {
