@@ -6,7 +6,9 @@ class Button extends Component {
     super(...props);
   }
 
-  onClickHandler() {}
+  onClickHandler(node, e) {
+    this.props.onClick?.bind(node, e)();
+  }
   @AsNode
   getTemplate() {
     return `
@@ -18,7 +20,7 @@ class Button extends Component {
   }
 
   bindEvent(node) {
-    node.addEventListener("click", this.props.onClick ?? this.onClickHandler);
+    node.addEventListener("click", this.onClickHandler.bind(this, node));
     return node;
   }
 

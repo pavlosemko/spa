@@ -1,7 +1,7 @@
 import Component from "@/plugins/component";
 import { AsNode } from "@/common/decorators";
 
-class Input extends Component {
+class SignUpInput extends Component {
   constructor(...props) {
     super(...props);
   }
@@ -24,4 +24,4 @@ class Input extends Component {
     return this.getTemplate();
   }
 }
-export default Input;
+export default SignUpInput;

@@ -2,7 +2,7 @@ import Component from "@/plugins/component";
 import "./signup.scss";
 import { AsNode } from "@/common/decorators";
 import Button from "@/common/components/Button/Button";
-import Input from "@/pages/signup/Input";
+import SignUpInput from "@/pages/signup/SignUpInput";
 import Heading from "@/common/components/Heading/Heading";
 import { router } from "@/router/router";
 
@@ -13,14 +13,14 @@ export default class SignUp extends Component {
       text: "Please sign Up",
       classList: ["h3", "mb-3", "fw-normal"],
     });
-    const LoginInput = new Input({
+    const LoginInput = new SignUpInput({
       type: "email",
       name: "login",
       id: "login",
       label: "Login",
     });
 
-    const PasswordInput = new Input({
+    const PasswordInput = new SignUpInput({
       type: "password",
       name: "password",
       id: "password",
@@ -34,9 +34,9 @@ export default class SignUp extends Component {
     });
     const SingInButton = new Button({
       type: "button",
-      text: "Sign in",
+      text: "Sign In",
       classList: ["btn-outline-primary", "w-100", "py-2", "mt-3"],
-      onClick: (e) => {
+      onClick(e) {
         e.preventDefault();
         router.go("/sign-in");
       },

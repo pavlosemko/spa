@@ -20,7 +20,9 @@ export default class Component {
 
   replaceSlot(template, ...slots) {
     for (const { key, replacer } of slots) {
-      template.querySelector(key)?.replaceWith(replacer());
+      if (replacer && typeof replacer === "function") {
+        template.querySelector(key)?.replaceWith(replacer());
+      }
     }
 
     return template;
