@@ -1,24 +1,21 @@
-import './input.scss';
+import "./input.scss";
 import Component from "@/plugins/component";
 import { AsNode } from "@/common/decorators";
 
-
 class Input extends Component {
-    constructor(...props) {
-        super(...props);
-    }
+  constructor(...props) {
+    super(...props);
 
-    onChangeHandler() {
-        console.log(123);
-    }
+    console.log(this.props, "props");
+  }
 
-    // innerHTML = string vs append(node)
-    /// createElement vs Template String
+  onChangeHandler(event) {
+    this.props.onChange(event);
+  }
 
-
-    @AsNode
-    getTemplate() {
-        return `
+  @AsNode
+  getTemplate() {
+    return `
             <div class="mb-3">
                 <label
                   for="login"
@@ -33,31 +30,17 @@ class Input extends Component {
                 />
             </div>
         `;
+  }
 
-    }
+  bindEvent(node) {
+    node
+      .querySelector("input")
+      .addEventListener("change", (event) => this.onChangeHandler(event));
+    return node;
+  }
 
-    bindEvent(node) {
-        node.querySelector('input').addEventListener('change', this.onChangeHandler)
-        return node;
-    }
-
-    render() {
-        return this.bindEvent(this.getTemplate());
-    }
+  render() {
+    return this.bindEvent(this.getTemplate());
+  }
 }
 export default Input;
-
-
-// const div = document.createElement('div');
-// div.className = 'mb-3';
-//
-// const input = document.createElement('input');
-// input.id = this.props.id;
-// input.className = 'form-control login';
-//
-// div.append(input);
-//
-// input.addEventListener('change', this.onChangeHandler)
-//
-//
-// return div;

@@ -20,19 +20,10 @@ export default class Component {
 
   replaceSlot(template, ...slots) {
     for (const { key, replacer } of slots) {
-      if (replacer && typeof replacer === "function") {
-        template.querySelector(key)?.replaceWith(replacer());
-      }
+      template.querySelector(key).replaceWith(replacer());
     }
 
     return template;
-  }
-
-  parseClassList(classList) {
-    if (classList && !Array.isArray(classList)) {
-      return "";
-    }
-    return classList.join(" ");
   }
 
   [Symbol.toPrimitive]() {
