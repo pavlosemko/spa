@@ -13,8 +13,21 @@ export default class SignIn extends Component {
   }
 
   async onClickHandler(event) {
-    store.dispatch(mutation_types.SET_IS_LOADING, true);
-
+    // store.dispatch(mutation_types.SET_IS_LOADING, true);
+    const a = [
+      "alert-success",
+      "alert-primary",
+      "alert-secondary",
+      "alert-danger",
+      "alert-warning",
+      "alert-info",
+      "alert-light",
+      "alert-dark",
+    ];
+    store.dispatch(mutation_types.SET_ALERT, {
+      type: a[Math.floor(Math.random() * a.length)],
+      message: `Ви авторизовані успішно`,
+    });
     const { login, password } = this.credentials;
 
     let response;
@@ -24,7 +37,7 @@ export default class SignIn extends Component {
     }
 
     setTimeout(() => {
-      store.dispatch(mutation_types.SET_IS_LOADING, false);
+      // store.dispatch(mutation_types.SET_IS_LOADING, false);
     }, 1000);
   }
 
